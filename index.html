@@ -48,6 +48,12 @@
          <input type="submit" value="submit">
      </form>
     </div>
+      <br> <br>
+    <p id="details"></p>
+
+    <div id="image">
+        <img src="" alt="">
+    </div>
     
     <script>
         const form = document.getElementById('form');
@@ -69,6 +75,16 @@
                 alert(`Name: ${name.value}, Email: ${email.value}\nForm submitted successfully`);
             }
         });
+        //display the form data
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            const nameValue = name.value;
+            const emailValue = email.value;
+            const details = document.getElementById('details');
+            details.innerHTML = `Name: ${nameValue}, Email: ${emailValue}`;
+        });
+
+
     </script>
     
 </body>
