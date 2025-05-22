@@ -51,14 +51,22 @@
       <br> <br>
     <p id="details"></p>
 
+    <br> <br>
+    <button id="toggleButton">view picture</button>
+    <br><br>
+    <label for="">zoom</label>
+    <input type="range" min="20" max="100" value="50" id="rangeInput">
+    <br><br>
     <div id="image">
-        <img src="" alt="">
+        <img src="https://images.unsplash.com/photo-1744894203360-a3f3c56433e2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxOXx8fGVufDB8fHx8fA%3D%3D" alt="">
     </div>
     
     <script>
         const form = document.getElementById('form');
         const name = document.getElementById('name');
         const email = document.getElementById('email');
+        const rangeInput = document.getElementById('rangeInput');
+        
         
         form.addEventListener('submit', function(event) {
             if(name.value === '' || email.value === '') {
@@ -83,7 +91,25 @@
             const details = document.getElementById('details');
             details.innerHTML = `Name: ${nameValue}, Email: ${emailValue}`;
         });
+        //toggle the image
+        const toggleButton = document.getElementById('toggleButton');
+        const image = document.getElementById('image');
 
+        toggleButton.addEventListener('click', function() {
+            if (image.style.display === 'none') {
+                image.style.display = 'block';
+                toggleButton.innerText = 'hide picture';
+            } else {
+                image.style.display = 'none';
+                toggleButton.innerText = 'view picture';
+            }
+        });
+        //change the image size
+        rangeInput.addEventListener('input', function() {
+            const image = document.querySelector('#image img');
+            const value = rangeInput.value;
+            image.style.width = value + '%';
+        });
 
     </script>
     
