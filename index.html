@@ -7,7 +7,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- <nav class="navbar"> -->
+    <div class="navdiv">
+        <div class="logo"><p>logo</p>
+            <button>menu</button>
+        </div>
+        <ul>
+            <li>home</li>
+            <li>about</li>
+            <li>services</li>
+            <li>portfolio</li>
+        </ul>
+    </div>
+<!-- </nav> -->
+
     <h1>Flexbox Grid</h1>
+
     <div class="container">
         <div class="item">1 </div>
         <div class="item">2</div>
@@ -21,6 +36,40 @@
         
 
     </div>
+    <br><br>
+    <div class="form-container">
+        <form action="" id="form">
+         <label for="name">name</label>
+         <input type="text" id="name" name="name" placeholder="Enter your name">
+         <br><br>
+         <label for="email">email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email">
+          <br><br>
+         <input type="submit" value="submit">
+     </form>
+    </div>
+    
+    <script>
+        const form = document.getElementById('form');
+        const name = document.getElementById('name');
+        const email = document.getElementById('email');
+        
+        form.addEventListener('submit', function(event) {
+            if(name.value === '' || email.value === '') {
+                event.preventDefault();
+                alert('Please fill in all fields');
+            } else if(!email.value.includes('@')) {
+                event.preventDefault();
+                alert('Please enter a valid email address');
+            } else if(name.value.length < 5) {
+                event.preventDefault();
+                alert('Name must be at least 5 characters long');
+            }
+            else {
+                alert(`Name: ${name.value}, Email: ${email.value}\nForm submitted successfully`);
+            }
+        });
+    </script>
     
 </body>
 </html>
